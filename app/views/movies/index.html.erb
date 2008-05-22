@@ -1,5 +1,10 @@
 <h1>Listing movies</h1>
 
+<% form_tag({}, {:method => :get}) do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -8,9 +13,9 @@
   </tr>
 
 <% for movie in @movies %>
-  <tr>
+  <tr class="<%= cycle 'odd', 'even' %>">
     <td><%=h movie.title %></td>
-    <td><%=h movie.disk_id %></td>
+    <td><%=h movie.disk_label %></td>
     <td><%=h movie.imdb_link %></td>
     <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>

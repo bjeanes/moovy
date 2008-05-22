@@ -1,10 +1,63 @@
-body { background-color: #fff; color: #333; }
+body { background-color: #3F6299; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
 }
+
+#header, #main, #notice {
+	width:800px;
+	margin:auto;
+	border:6px solid #2B2B2B;
+	padding:10px;
+}
+
+#header {
+	margin-top:20px;
+	height:60px;
+	background-color:#BBC0D7;
+}
+
+#header h1 { text-align:center;}
+
+#notice {
+	background-color:#5FC574;
+	margin-top:20px;
+}
+
+#main {
+	min-height:400px;
+	margin-top:20px;
+	background-color:#E3E3E3;
+}
+
+table {
+	width: 100%;
+	border-collapse:collapse;
+}
+
+table td,table th {
+	border: 1px solid #2B2B2B;
+	padding:5px;
+}
+
+table tr.even {
+	background-color:#D2D2D2;
+}
+
+table tr.odd {
+	background-color:#F3F3F3;
+}
+
+
+
+
+
+
+
+
+
 
 pre {
   background-color: #eee;

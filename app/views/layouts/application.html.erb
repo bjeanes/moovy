@@ -8,10 +8,16 @@
   <%= stylesheet_link_tag 'application' %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
-
+  <div id="header">
+   <h1>~Moovy~</h1>
+  </div>
+  <% if notice = flash[:notice] %>
+    <div id="notice">
+      <%= notice %>
+    </div>
+  <% end %>
+  <div id="main">
+    <%= yield  %>
+  </div>
 </body>
 </html>
