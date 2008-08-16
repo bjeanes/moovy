@@ -1,24 +1,17 @@
-<p>
-  <b>Title:</b>
-  <%=h @movie.title %>
-</p>
+<%= image_tag @movie.image, :alt => @movie.title %>
+
+<h1><%=h @movie.title %></h1>
+<h4>
+  <%=link_to "IMDB", "http://www.imdb.com/title/#{@movie.imdb_link}/" %>
+	<%= @movie.genres.join(', ') %>
+</h4>
 
 <p>
   <b>Disk:</b>
   <%=h @movie.disk_label %>
 </p>
 
-<p>
-  <b>Imdb link:</b>
-  <%=link_to @movie.imdb_link, "http://www.imdb.com/title/#{@movie.imdb_link}/" %>
-</p>
-
-<p><strong>Genres:</strong></p>
-<ul>
-	<% @movie.genres.each do |genre| %>
-		<li><%= genre %></li>
-	<% end %>
-</ul>
+<blockquote><%= @movie.synopsis %></blockquote>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

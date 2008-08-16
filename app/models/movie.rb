@@ -3,9 +3,9 @@ class Movie < ActiveRecord::Base
   
   def self.search(terms)
     if terms
-      find(:all, :conditions => ['title LIKE ?', "%#{terms}%"])
+      find(:all, :include => :disk, :conditions => ['title LIKE ?', "%#{terms}%"])
     else
-      find(:all)
+      find(:all, :include => :disk)
     end
   end
   
@@ -30,9 +30,16 @@ class Movie < ActiveRecord::Base
     []
   end
   
+  def image
+    imdb.poster_url rescue "/images/no_poster.jpg"
+  end
+  
+  def synopsis
+    imdb.plot rescue ""
+  end
+  
   private
   def imdb
-    @imdb ||= Imdb.find_
-    movie_by_id(self.imdb_link)
+    @imdb ||= Imdb.find_movie_by_id(self.imdb_link)
   end
 end
