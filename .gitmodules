@@ -1,3 +1,6 @@
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
+[submodule "lib/imdb_lib"]
+	path = lib/imdb_lib
+	url = git@github.com:bjeanes/imdb.git
