@@ -31,7 +31,7 @@ class Movie < ActiveRecord::Base
   end
   
   def rating
-    imdb.rating
+    "#{imdb.rating}/10" rescue "???"
   end
   
   def image
@@ -49,7 +49,7 @@ class Movie < ActiveRecord::Base
         Imdb.find_movie_by_id(imdb_link)
       else
         if imdb = Imdb.find_movie_by_name(title)
-          self.imdb_link = imdb.imdb_id
+          update_attributes(:imdb_link => imdb.imdb_id)
           imdb
         end
       end
