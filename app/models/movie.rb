@@ -30,6 +30,10 @@ class Movie < ActiveRecord::Base
     []
   end
   
+  def rating
+    imdb.rating
+  end
+  
   def image
     imdb.poster_url rescue "/images/no_poster.jpg"
   end
@@ -40,6 +44,15 @@ class Movie < ActiveRecord::Base
   
   private
   def imdb
-    @imdb ||= Imdb.find_movie_by_id(self.imdb_link)
+    @imdb ||= begin
+      if imdb_link
+        Imdb.find_movie_by_id(imdb_link)
+      else
+        if imdb = Imdb.find_movie_by_name(title)
+          self.imdb_link = imdb.imdb_id
+          imdb
+        end
+      end
+    end
   end
 end
