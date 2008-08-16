@@ -1,0 +1,19 @@
+A simple ruby library to scrape IMDB
+
+USAGE:
+
+require 'Imdb'
+
+movie = Imdb.find_movie_by_id('tt0382932')
+# or
+movie = Imdb.find_movie_by_name('Ratatouille')
+
+puts "IMDB ID: #{movie.imdb_id}"
+puts "Title: #{movie.title}"
+puts "Plot: #{movie.plot}"
+puts "Runtime: #{movie.runtime}"
+puts "Rating: #{movie.rating}"
+puts "Poster URL: #{movie.poster_url}"
+
+Thats about all it does. its simple. I only made it to work with another project.
+Thanks to 'We <} Code' for the jump start via http://www.weheartcode.com/2007/04/03/scraping-imdb-with-ruby-and-hpricot/

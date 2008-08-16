@@ -10,9 +10,15 @@
 
 <p>
   <b>Imdb link:</b>
-  <%=h @movie.imdb_link %>
+  <%=link_to @movie.imdb_link, "http://www.imdb.com/title/#{@movie.imdb_link}/" %>
 </p>
 
+<p><strong>Genres:</strong></p>
+<ul>
+	<% @movie.genres.each do |genre| %>
+		<li><%= genre %></li>
+	<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

@@ -18,4 +18,14 @@ class Movie < ActiveRecord::Base
   rescue
     nil
   end
+  
+  # IMDB stuff
+  def genres
+    imdb.genres.collect{|g| g.name}
+  end
+  
+  private
+  def imdb
+    @imdb ||= Imdb.find_movie_by_id(self.imdb_link)
+  end
 end
