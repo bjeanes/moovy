@@ -14,10 +14,9 @@
 
 <% for movie in @movies %>
   <tr class="<%= cycle 'odd', 'even' %>">
-    <td><%=h movie.title %></td>
+    <td><%=link_to h(movie.title), movie %></td>
     <td><%=h movie.disk_label %></td>
     <td><%=h movie.imdb_link %></td>
-    <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
