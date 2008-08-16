@@ -19,6 +19,10 @@ class Movie < ActiveRecord::Base
     nil
   end
   
+  def imdb_link
+    "http://www.imdb.com/title/#{imdb_id}/" if imdb_id
+  end
+  
   def to_param
     "#{id}-#{title.gsub(/[^a-zA-Z0-9]+/,'-')}"
   end
@@ -45,11 +49,11 @@ class Movie < ActiveRecord::Base
   private
   def imdb
     @imdb ||= begin
-      if imdb_link
-        Imdb.find_movie_by_id(imdb_link)
+      if imdb_id
+        Imdb.find_movie_by_id(imdb_id)
       else
         if imdb = Imdb.find_movie_by_name(title)
-          update_attributes(:imdb_link => imdb.imdb_id)
+          update_attributes(:imdb_id => imdb.imdb_id)
           imdb
         end
       end

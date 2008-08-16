@@ -2,7 +2,7 @@
 
 <h1><%=h @movie.title %> (<%= @movie.rating %>)</h1>
 <h4>
-  <%=link_to "IMDB", "http://www.imdb.com/title/#{@movie.imdb_link}/" %>
+  <%= link_to("IMDB", @movie.imdb_link) if @movie.imdb_id %>
 	<%= @movie.genres.join(', ') %>
 </h4>
 

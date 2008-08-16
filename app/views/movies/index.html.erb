@@ -9,14 +9,14 @@
   <tr>
     <th>Title</th>
     <th>Disk</th>
-    <th>Imdb link</th>
+    <th>Imdb</th>
   </tr>
 
 <% for movie in @movies %>
   <tr class="<%= cycle 'odd', 'even' %>">
     <td><%=link_to h(movie.title), movie %></td>
     <td><%=h movie.disk_label %></td>
-    <td><%=h movie.imdb_link %></td>
+    <td><%= link_to(movie.imdb_id, movie.imdb_link) if movie.imdb_id %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
