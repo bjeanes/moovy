@@ -19,13 +19,20 @@ class Movie < ActiveRecord::Base
     nil
   end
   
+  def to_param
+    "#{id}-#{title.gsub(/[^a-zA-Z0-9]+/,'-')}"
+  end
+  
   # IMDB stuff
   def genres
     imdb.genres.collect{|g| g.name}
+  rescue
+    []
   end
   
   private
   def imdb
-    @imdb ||= Imdb.find_movie_by_id(self.imdb_link)
+    @imdb ||= Imdb.find_
+    movie_by_id(self.imdb_link)
   end
 end
